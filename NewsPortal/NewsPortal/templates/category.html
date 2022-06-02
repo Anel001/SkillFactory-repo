@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %} Category {% endblock title %}
+
+{% block content %}
+<h3>Подписка на рассылку</h3>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+    <thead>
+            <th>
+                Категории
+            </th>
+        </thead>
+        {% for cat in category %}
+        <tr>
+           <td>
+                {{cat.category_name}}
+                <a href="{% url 'subscribe' cat.id %}"><u> Подписаться</u></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock content %}
